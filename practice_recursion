@@ -1,0 +1,78 @@
+
+/*
+ [*]: Create an Array and a struct
+ [*]: define an array of struct
+ [*]: move +ve intergers plus index from array to array of struct
+ [*]: sum positive integers inside the struct
+ [*]: store the sum and the number of positve integers inside the struct pointer
+ [*]: output the sum and the number of positive integers 
+  */
+
+ #include <stdio.h>
+ #include <stdlib.h>
+ #define AMOUNT 10
+
+ typedef struct 
+ {
+    int n;
+    int data;
+ }Measurements;
+ 
+ 
+void fillStruct(Measurements[], int arr[], int);
+void calculate(Measurements*, Measurements[], int);
+void output(Measurements*);
+
+int main()
+{
+    Measurements Values[AMOUNT] = {0};
+    Measurements data;
+    Measurements *ptr = &data; 
+
+    int arr[AMOUNT] = {-3,948,-1,-398,-9,-47,-1,-49,-56, 17};
+    fillStruct(Values, arr, AMOUNT );
+    calculate(&data, Values, AMOUNT);
+    output(&data);
+
+    return 0;
+}
+
+void fillStruct(Measurements P[], int arr[], int n)
+{
+    int i;
+    for ( i = 0; i < n; i++)
+    {
+        if (arr[i] > 0)
+        {
+            P[i].n = i;
+            P[i].data = arr[i];
+            printf("%d\n ", arr[i]);
+        }
+         
+    }
+     
+
+}
+void calculate(Measurements *Data, Measurements A[], int n)
+{
+    int sum = 0;
+    int count = 0;
+    int i;
+    for ( i = 0; i < n; i++)
+    {
+        sum = sum + A[i].data;
+        if (A[i].data != 0)
+        {
+           count = count + 1;
+        }
+        
+    }
+    Data->data = sum;
+    Data->n = count;
+
+}
+void output(Measurements *Data)
+{
+    printf("The sum of the Positive numbers are: %d", Data->data);
+    printf("The number of Positive numbers are: %d", Data->n);
+}

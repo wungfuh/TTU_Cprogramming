@@ -1,0 +1,1 @@
+This is a collection of my programming tasks and solution during my C programming 1 course at Tallinn University of Technology
